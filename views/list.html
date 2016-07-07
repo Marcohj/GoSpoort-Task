@@ -1,0 +1,50 @@
+<h2 class="coach-results">
+  <a href="#">Search</a> <small>●</small> <span>{{coachList.remaining()}} Coaches</span> match yourt coach
+</h2>
+
+<div class="row">
+    <!-- Put first, so we can get it on top when on mobile, could have used flexbox, but that isn't really crossbrowser friendly -->
+    <div class="sidebar">
+        <div class="sidebar-content">
+            <div class="coach-filter coach-filter-vertical">
+                <div class="coach-filter-label">Location</div>
+                <label class="coach-filter-element" ng-repeat="location in coachList.locations">
+                    <input type="checkbox" ng-click="coachList.toggleFilter(location, coachList.locationsFiltered)"><i class="icon">done</i> {{location}}
+                </label>
+            </div>
+            <div class="coach-filter">
+                <div class="coach-filter-label">Sport type</div>
+                <label class="coach-filter-element" ng-repeat="discipline in coachList.disciplines">
+                    <input type="checkbox" ng-click="coachList.toggleFilter(discipline, coachList.disciplinesFiltered)"><i class="icon">done</i> {{discipline}}
+                </label>
+            </div>
+        </div>
+    </div>
+
+    <div class="content">
+        <div class="row">
+            <!-- Should probably have used an $filter, but we want the server to do the filtering -->
+            <div class="card" ng-repeat="coach in coachList.coachesFiltered | orderBy: 'name'">
+                <div class="card-content">
+                    <div class="row coach">
+                        <div class="card-image">
+                            <img class="coach-image" ng-src="{{coach.picture}}">
+                        </div>
+                        <div class="card-text">
+                            <h3 class="coach-name">{{coach.name}}</h3>
+                            <div class="coach-disciplines">
+                                <span ng-repeat="discipline in coach.discipline track by $index">{{discipline}}</span>
+                            </div>
+                            <div class="row">
+                                <!-- Again, $filters should be used to convert it to hours:minutes and currency -->
+                                <div class="coach-price"><i class="icon">local_offer</i>{{coach.price + "$"}}</div>
+                                <div class="coach-time"><i class="icon">access_time</i>{{coach.distance}}</div>
+                            </div>
+                        </div>
+                    </div>
+                    <a ng-href="#/details/{{coach.guid}}" class="card-action">View details</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

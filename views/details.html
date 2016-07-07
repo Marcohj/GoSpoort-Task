@@ -1,0 +1,47 @@
+<div id="coach-details">
+    <h2>
+    {{coachDetails.coach.name}}
+    <small>{{coachDetails.coach.company}}</small>
+  </h2>
+    <div class="row">
+        <div class="coach-info">
+            <div class="row coach-offer">
+                <div class="coach-price"><i class="icon">local_offer</i>{{coachDetails.coach.price + "$"}}</div>
+                <div class="coach-time"><i class="icon">access_time</i>{{coachDetails.coach.distance}}</div>
+            </div>
+
+            <p>{{coachDetails.coach.about}}</p>
+
+            <p class="disciplines">
+                <strong>Disciplines:</strong>
+                <span ng-repeat="discipline in coachDetails.coach.discipline track by $index">{{discipline}}</span>
+            </p>
+            <p>
+                <strong>Location:</strong> {{coachDetails.coach.location}}
+            </p>
+            <p>
+                <a href="#/" class="button">Back</a>
+                <a href="#" class="button button-proceed">Contact</a>
+            </p>
+        </div>
+        <div class="coach-image">
+            <img ng-src="{{coachDetails.coach.picture}}">
+        </div>
+        <div class="coach-contact">
+            <table class="table">
+                <tr>
+                    <th width="150">E-mail</th>
+                    <td><a href="mailto:{{coachDetails.coach.email}}">{{coachDetails.coach.email}}</a></td>
+                </tr>
+                <tr>
+                    <th>Phone</th>
+                    <td>{{coachDetails.coach.phone}}</td>
+                </tr>
+                <tr>
+                    <th>Address</th>
+                    <td>{{coachDetails.coach.address}}</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>

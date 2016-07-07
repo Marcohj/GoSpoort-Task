@@ -1,0 +1,87 @@
+// Button style
+.button {
+  display: inline-block;
+  padding: .375rem 1rem;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  border: 1px solid $primary-color;
+  color: $primary-color;
+
+  &:hover,
+  &:focus {
+    background: $primary-color;
+    color: $white;
+  }
+
+  &-proceed {
+    border-color: $success-color;
+    color: $success-color;
+
+    &:hover,
+    &:focus {
+      background: $success-color;
+      color: $white;
+    }
+  }
+}
+
+// Base classes (Should be move)
+.container {
+  @include grid-row;
+
+  @include breakpoint(medium down) {
+      padding: 0 1rem;
+  }
+
+  @include breakpoint(small down) {
+      padding: 0 2rem;
+  }
+}
+
+.row {
+  @include grid-row;
+  margin-left: -0.9375rem;
+  margin-right: -0.9375rem;
+}
+
+.menu {
+  @include menu-base;
+
+  a {
+    color: $menu-link;
+
+    &:hover,
+    &:focus {
+      color: $menu-link-hover;
+    }
+  }
+}
+
+// Google Material Icons
+.icon {
+  font-family: 'Material Icons';
+  font-weight: normal;
+  font-style: normal;
+  display: inline-block;
+  line-height: 1;
+  text-transform: none;
+  letter-spacing: normal;
+  word-wrap: normal;
+  white-space: nowrap;
+  direction: ltr;
+
+  // Cross browser crap
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  -moz-osx-font-smoothing: grayscale;
+  font-feature-settings: 'liga';
+}

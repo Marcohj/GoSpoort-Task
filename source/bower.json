@@ -1,0 +1,19 @@
+{
+  "name": "gospoort",
+  "version": "1.0.0",
+  "description": "Basic template.",
+  "main": "index.html",
+  "dependencies": {
+    "foundation-sites": "~6.2.0",
+    "angular": "latest",
+    "angular-route": "latest"
+  },
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "private": true
+}

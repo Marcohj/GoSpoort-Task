@@ -1,0 +1,71 @@
+@charset 'utf-8';
+@import 'settings';
+@import 'foundation';
+@include foundation-global-styles;
+@include foundation-typography;
+@include foundation-table;
+@import 'components';
+@import 'pages/coach-list';
+@import 'pages/coach-details';
+
+// Header
+header {
+    margin: 2rem 0;
+    .menu {
+        float: $global-right;
+        li + li:before {
+            content: "●\00a0";
+            padding: 0 10px;
+            color: $body-font-color-alt;
+        }
+        li.active > a {
+            color: $menu-link-active;
+        }
+        a {
+            display: inline-block;
+            font-size: 1.2rem;
+        }
+    }
+}
+// Main
+.page-header {
+    background: $page-header-background;
+    text-align: center;
+    margin-bottom: 1.4rem;
+    h1 {
+        margin: 1.4rem 0;
+        color: $page-header-color;
+    }
+}
+.content {
+    @include grid-column(9);
+    @include breakpoint(medium down) {
+         @include grid-column(12);
+    }
+}
+.sidebar {
+    @include grid-column(3);
+    @include breakpoint(medium down) {
+         @include grid-column(12);
+    }
+    float: right;
+    &-content {
+        background: $sidebar-background;
+        padding: 1.5rem;
+    }
+}
+// Footer
+footer {
+    text-align: center;
+    margin-top: 5rem;
+    color: $body-font-color-alt;
+    .menu {
+        display: inline-block;
+        a {
+            &:focus,
+            &:hover {
+                text-decoration: underline;
+            }
+        }
+    }
+}

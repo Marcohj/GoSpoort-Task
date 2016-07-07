@@ -1,0 +1,52 @@
+#coach-details {
+    .coach {
+        &-info {
+            @include grid-column(5);
+            @include breakpoint(small down) {
+                 @include grid-column(8);
+            }
+            .disciplines {
+                span + span:before {
+                    content: ",\00a0";
+                }
+            }
+        }
+        &-offer {
+            border: 1px solid $body-font-color-alt;
+            padding: 0.5rem;
+            margin-bottom: 0.5rem;
+        }
+        &-price,
+        &-time {
+            @include grid-column(6);
+            vertical-align: middle;
+            font-size: 1.1rem;
+            .icon {
+                color: $body-font-color-alt;
+                font-size: 24px;
+                float: left;
+                margin-right: 0.6rem;
+            }
+        }
+        &-image {
+            @include grid-column(2);
+            @include breakpoint(small down) {
+                 @include grid-column(4);
+            }
+            img {
+                border-radius: 50%;
+                max-width: 100%;
+                height: auto;
+                display: block;
+                margin-left: auto;
+                margin-right: auto;
+            }
+        }
+        &-contact {
+            @include grid-column(5);
+            @include breakpoint(small down) {
+                 @include grid-column(12);
+            }
+        }
+    }
+}

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="gospoort">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="">
+
+    <title>GoSpoort.com</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="/assets/css/app.css" media="screen" charset="utf-8">
+    <link href='https://fonts.googleapis.com/css?family=Droid+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+
+<body>
+    <div>
+        <header>
+            <nav class="container">
+              <!-- Could have done a OffCanvas menu, but with the number of items it really isn't needed -->
+                <ul class="menu">
+                    <li><a href="#">Home</a></li>
+                    <li class="active"><a href="#">Features</a></li>
+                    <li><a href="#">Testimonials</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <!-- Assumed it's used on "page" level, could be put inside ng-view though -->
+        <div class="page-header">
+            <div class="container">
+                <h1>Find Trainers to match your needs</h1>
+            </div>
+        </div>
+
+        <div class="main">
+            <div class="container" ng-view>
+            </div>
+        </div>
+
+        <footer>
+            <div class="container">
+                <ul class="menu">
+                    <li><a href="#">Overview</a></li>
+                    <li><a href="#">Privacy policy</a></li>
+                    <li><a href="#">Cookie policy</a></li>
+                    <li><a href="#">Terms</a></li>
+                </ul>
+                <p>2016 companyname. All rights reserved.</p>
+            </div>
+        </footer>
+    </div>
+
+    <!-- JavaScript -->
+    <script src="/assets/js/app.js" charset="utf-8"></script>
+
+</body>
+
+</html>
