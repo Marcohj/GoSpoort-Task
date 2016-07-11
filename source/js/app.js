@@ -1,7 +1,7 @@
 var app = angular.module('gospoort', ['ngRoute']);
 
 app.config(['$routeProvider', function($routeProvider) {
-    var resolveCoaches = {
+    let resolveCoaches = {
         coaches: ['REST', function(REST) {
             return REST.GET();
         }]
@@ -24,7 +24,7 @@ app.config(['$routeProvider', function($routeProvider) {
 }]);
 
 app.service('REST', ['$http', function($http) {
-    // Here we a GET method accepting the paramters "location" and "type" could easily be done
+    // Here a GET method accepting the paramters "location" and "type" could easily be done
     this.GET = function() {
         return $http({
             method: 'GET',
@@ -41,7 +41,7 @@ app.service('REST', ['$http', function($http) {
 }]);
 
 app.controller('CoachListController', ['coaches', function(coaches) {
-    var coachList = this;
+    let coachList = this;
     coachList.coaches = coaches
     coachList.coachesFiltered = coaches;
     coachList.disciplines = [];
@@ -49,10 +49,10 @@ app.controller('CoachListController', ['coaches', function(coaches) {
     coachList.locations = [];
     coachList.locationsFiltered = [];
 
-    angular.forEach(coaches, function(coach, key) {
-        angular.forEach(coach.discipline, function(val, key) {
-            if (coachList.disciplines.indexOf(val) == -1) {
-                coachList.disciplines.push(val);
+    coachList.coaches.map(coach => {
+        coach.discipline.map(discipline => {
+            if (coach.discipline != undefined && coachList.disciplines.indexOf(discipline) == -1) {
+                coachList.disciplines.push(discipline);
             }
         });
 
@@ -75,16 +75,16 @@ app.controller('CoachListController', ['coaches', function(coaches) {
     };
 
     coachList.disciplinesFilter = function() {
-        coachList.coachesFiltered = [];
-        angular.forEach(coachList.coaches, function(coach, key) {
-            var showCoach = true;
-            if (coachList.disciplinesFiltered.length !== 0 || coachList.locationsFiltered.length !== 0) {
-                angular.forEach(coachList.disciplinesFiltered, function(item, key) {
-                    if (coach.discipline.indexOf(item) === -1) {
+        coachList.coachesFiltered = []; // Empty list of filtered coaches
+        coachList.coaches.map(coach => {
+            let showCoach = true;
+            if (coachList.disciplinesFiltered.length > 0 || coachList.locationsFiltered.length > 0) {
+                coachList.disciplinesFiltered.map(discipline => {
+                    if (coach.discipline == undefined || coach.discipline.indexOf(discipline) === -1) {
                         showCoach = false;
                     }
                 });
-                angular.forEach(coachList.locationsFiltered, function(item, key) {
+                coachList.locationsFiltered.map(location => {
                     if (coach.location == undefined || coach.location.indexOf(item) === -1) {
                         showCoach = false;
                     }
@@ -100,15 +100,15 @@ app.controller('CoachListController', ['coaches', function(coaches) {
 }]);
 
 app.controller('CoachDetailsController', ['$location', '$routeParams', 'coaches', function($location, $routeParams, coaches) {
-    var coachDetails = this;
-    var coachGuid = $routeParams.coachId;
+    let coachDetails = this;
+    const coachGuid = $routeParams.coachId;
 
     coachDetails.coaches = coaches;
     coachDetails.coach = {};
 
-    angular.forEach(coaches, function(coach, key) {
+    coaches.map(coach => {
         if (coach.guid === coachGuid) {
-            coachDetails.coach = coach;
+            return coachDetails.coach = coach;
         }
     });
 }]);
