@@ -49,8 +49,8 @@ app.controller('CoachListController', ['coaches', function(coaches) {
     coachList.locations = [];
     coachList.locationsFiltered = [];
 
-    coachList.coaches.map(coach => {
-        coach.discipline.map(discipline => {
+    coachList.coaches.foreach(coach => {
+        coach.discipline.foreach(discipline => {
             if (coach.discipline != undefined && coachList.disciplines.indexOf(discipline) == -1) {
                 coachList.disciplines.push(discipline);
             }
@@ -79,12 +79,12 @@ app.controller('CoachListController', ['coaches', function(coaches) {
         coachList.coaches.map(coach => {
             let showCoach = true;
             if (coachList.disciplinesFiltered.length > 0 || coachList.locationsFiltered.length > 0) {
-                coachList.disciplinesFiltered.map(discipline => {
+                coachList.disciplinesFiltered.foreach(discipline => {
                     if (coach.discipline == undefined || coach.discipline.indexOf(discipline) === -1) {
                         showCoach = false;
                     }
                 });
-                coachList.locationsFiltered.map(location => {
+                coachList.locationsFiltered.foreach(location => {
                     if (coach.location == undefined || coach.location.indexOf(item) === -1) {
                         showCoach = false;
                     }
@@ -106,7 +106,7 @@ app.controller('CoachDetailsController', ['$location', '$routeParams', 'coaches'
     coachDetails.coaches = coaches;
     coachDetails.coach = {};
 
-    coaches.map(coach => {
+    coaches.foreach(coach => {
         if (coach.guid === coachGuid) {
             return coachDetails.coach = coach;
         }
